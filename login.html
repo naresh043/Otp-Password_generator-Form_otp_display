@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="password"],input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="button"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="button"]:hover {
+    background-color: #0056b3;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+ </style>
+</head>
+<body>
+    <form action="">
+        <input type="text" id="username" placeholder="Username">
+        <input type="text" id="password" placeholder="Password">
+        <input type="text" id="otp"placeholder="O T P">
+        <input type="button" value="LOGIN" id="register">
+    </form>
+    <script>
+        var btn=document.getElementById("register")
+        // var array=[]
+        btn.addEventListener("click",function (){
+               //here get the user and password values from input field
+            var user=document.getElementById("username").value;
+            var pass=document.getElementById("password").value;
+            var otp=document.getElementById("otp").value;
+
+            var data=JSON.parse(localStorage.getItem("register"));
+3
+            console.log(data)
+            var array=[];
+            for(i=0;i<data.length;i++){
+                if(data[i].username==user||data[i].password==pass){//h
+                    array.push(data[i])
+                }
+            }
+            console.log(array[0].otp)
+            console.log(array.length)
+            if(array.length>0){
+                if(user==array[0].username && pass==array[0].password && otp==array[0].otp){
+                    alert("LOGIN SUCCUSSFUl");
+                }
+                else if(user==array[0].username ){
+                    alert("Incorrect Password")
+                }
+                else if(pass==array[0].password){
+                    alert("Incorrect username")
+                }
+                else(
+                    window.alert("Incorrect username & password ")
+                )
+            }
+            else{
+                var msg=confirm("U didnot register DO u want to go register page")
+                if(msg){
+                    window.location.assign("register.html")
+                }
+                else{
+                    alert("please register the first")
+                }
+                // alert("please register")
+            }
+        
+        })
+
+
+
+    </script>
+</body>
+</html>

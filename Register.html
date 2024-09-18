@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="password"],input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="button"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="button"]:hover {
+    background-color: #0056b3;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+    </style>
+</head>
+<body>
+    <form action="">
+        <input type="text" id="username" placeholder="Enetr ur username">
+        <input type="text" id="password" placeholder="Enetr ur password">
+        <input type="number" id="number" placeholder="Mobile Number" >
+        <input type="button" value="REGISTER" id="register">
+    </form>
+    <h1></h1>
+   
+    <script>
+        var btn=document.getElementById("register")
+        var array=[]
+        btn.addEventListener("click",function (){
+               //here get the user and password values from input field
+            var user=document.getElementById("username").value;
+            var pass=document.getElementById("password").value;
+            var num=document.getElementById("number").value;
+            console.log(user,pass,num)
+          
+            if(user!="" && pass!="" && user!=" " && pass!=" "&& num!="" && num!=" "){
+                // value to store the an object 
+                let otp = ""; 
+            for (let i = 0; i < 6; i++) {
+                let number = Math.floor(Math.random() * 10); 
+                let strnum = number.toString();
+                otp += strnum;
+            }
+
+            var obj={
+                username:user,
+                password:pass,
+                mobileno:num,
+                otp:otp
+            }
+            console.log(obj)
+            //push the value in the array 
+            array.push(obj)
+            localStorage.setItem("register",JSON.stringify(array));
+            alert(`your otp is ${otp} save this further useges`)
+            // alert the register successful
+            var msg=confirm("REGISTER succussful do you want go the login page");
+            
+            if(msg){
+                window.location.assign("login.html")
+            }
+            }else{
+                alert("plz give me correct input")
+            }
+        })
+        
+
+
+
+    </script>
+</body>
+</html>
